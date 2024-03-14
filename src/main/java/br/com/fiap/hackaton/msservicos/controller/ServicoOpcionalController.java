@@ -1,6 +1,7 @@
 package br.com.fiap.hackaton.msservicos.controller;
 
 import br.com.fiap.hackaton.msservicos.entity.ServicoOpcional;
+import br.com.fiap.hackaton.msservicos.service.IServicoOpcionalService;
 import br.com.fiap.hackaton.msservicos.service.impl.ServicoOpcionalServiceImpl;
 import br.com.fiap.hackaton.msservicos.dto.ServicoOpcionalRequest;
 import br.com.fiap.hackaton.msservicos.dto.ServicoOpcionalResponse;
@@ -20,10 +21,12 @@ import java.util.List;
 @RestController
 @RequestMapping("/servicos-opcionais")
 @AllArgsConstructor
-@Tag(name = "Serviços e  Opcionais", description = "API de Serviços Opcionais")
+//@Tag(name = "Serviços e  Opcionais", description = "API de Serviços Opcionais")
 public class ServicoOpcionalController {
 
-    private ServicoOpcionalServiceImpl service;
+    private IServicoOpcionalService service;
+
+    
 
     @GetMapping
     @Operation(summary = "Listar serviços e opcionais", description = "LIsta paginada de serviços e opcionais")
@@ -47,7 +50,7 @@ public class ServicoOpcionalController {
     @PutMapping("/{id}")
     @Operation(summary = "Atualizar cadastro de serviços e opcionais", description = "Atualizar cadastro de serviços e opcionais")
     public ResponseEntity<ServicoOpcionalResponse> atualizarServicoOpcional(
-            @PathVariable Long id,  @RequestBody @Valid ServicoOpcionalRequest servicoOpcionalRequest) {
+            @PathVariable Long id,  @RequestBody @Valid ServicoOpcionalRequest servicoOpcionalRequest) throws Exception {
 
         return new ResponseEntity<>(service.atualizar(id,servicoOpcionalRequest), HttpStatus.OK);
     }

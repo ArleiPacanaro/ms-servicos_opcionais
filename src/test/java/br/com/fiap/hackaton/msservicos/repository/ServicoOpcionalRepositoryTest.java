@@ -64,13 +64,12 @@ public class ServicoOpcionalRepositoryTest {
         var mensagemArmazenada = repository.save(servicoEOpcional);
 
         // Assert -- verifica
-                assertThat(mensagemArmazenada).isNotNull().isEqualTo(servicoEOpcional);
+         assertThat(mensagemArmazenada).isNotNull().isEqualTo(servicoEOpcional);
 
         // garanto que tive uma chamada a banco de dados...  do mockito... no sabe para deixa generico poderia usar Mensagem.class com Any()
         // e o que chamamos de spy
 
         verify(repository, times(1)).save(any(ServicoOpcional.class));
-
 
     }
 
