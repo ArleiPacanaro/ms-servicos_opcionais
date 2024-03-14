@@ -12,7 +12,7 @@ import java.util.List;
 
 public interface IServicoOpcionalService {
 
-    public Page<ServicoOpcional> listarTodos(Pageable paginacao);
+    public Page<ServicoOpcionalResponse> listarTodos(Pageable paginacao);
 
     @Transactional
     public ServicoOpcionalResponse adicionar(ServicoOpcionalRequest servicoOpcionalRequest);

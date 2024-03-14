@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 
 @Service
@@ -21,12 +22,24 @@ public class ServicoOpcionalServiceImpl implements IServicoOpcionalService {
 
 
     @Override
-    public Page<ServicoOpcional> listarTodos(Pageable paginacao) {
+    public Page<ServicoOpcionalResponse> listarTodos(Pageable paginacao) {
 
         Page<ServicoOpcional> servicosEopcionais = repository.findAll(paginacao);
 
 
-        return servicosEopcionais;
+        Page<ServicoOpcionalResponse> dtoPage = servicosEopcionais.map(new Function<ServicoOpcional, ServicoOpcionalResponse>() {
+            @Override
+            public ServicoOpcionalResponse apply(ServicoOpcional entity) {
+                ServicoOpcionalResponse dto = new ServicoOpcionalResponse(entity);
+
+
+                return dto;
+            }
+        });
+
+        return dtoPage;
+
+        //return servicosEopcionais;
     }
 
     @Override

@@ -27,11 +27,11 @@ public class ServicoOpcionalController {
 
     @GetMapping
     @Operation(summary = "Listar serviços e opcionais", description = "LIsta paginada de serviços e opcionais")
-    public ResponseEntity<Page<ServicoOpcional>> listarTodos(@RequestParam(defaultValue = "0") int page,
+    public ResponseEntity<Page<ServicoOpcionalResponse>> listarTodos(@RequestParam(defaultValue = "0") int page,
                                                                      @RequestParam(defaultValue = "10") int size) {
 
         Pageable pageable = PageRequest.of(page, size);
-        Page<ServicoOpcional> servicos = service.listarTodos(pageable);
+        Page<ServicoOpcionalResponse> servicos = service.listarTodos(pageable);
 
         return ResponseEntity.ok(servicos);
     }
