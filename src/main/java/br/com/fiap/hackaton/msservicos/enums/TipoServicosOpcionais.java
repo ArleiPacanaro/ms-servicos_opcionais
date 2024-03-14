@@ -2,7 +2,7 @@ package br.com.fiap.hackaton.msservicos.enums;
 
 public enum TipoServicosOpcionais {
     SERVICO(80d),
-    ITEM(2d);
+    ITEM(1d);
 
     private Double valorMinimo;
 
